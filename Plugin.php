@@ -64,7 +64,7 @@ class reCAPTCHAv3_Plugin implements Typecho_Plugin_Interface
 		$siteKey = Typecho_Widget::widget('Widget_Options')->plugin('reCAPTCHAv3')->siteKey;
 		$secretKey = Typecho_Widget::widget('Widget_Options')->plugin('reCAPTCHAv3')->secretKey;
       		if ($siteKey != "" && $secretKey != "") {
-			echo '<script src="https://recaptcha.net/recaptcha/api.js?render='.$siteKey.'"></script><input type="hidden" name="recaptcha_response" id="recaptchaResponse"></input><script>grecaptcha.ready(function() {grecaptcha.execute(\''.$siteKey.'\', {action: \'social\'}).then(function(token) {var recaptchaResponse = document.getElementById(\'recaptchaResponse\');recaptchaResponse.value = token;});});</script>'; //</script><div class="g-recaptcha" data-sitekey=' . $siteKey . '></div>';
+			echo '<script src="https://recaptcha.net/recaptcha/api.js?render='.$siteKey.'"></script><input type="hidden" name="recaptcha_response" id="recaptchaResponse"></input><script>grecaptcha.ready(function() {grecaptcha.execute(\''.$siteKey.'\', {action: \'social\'}).then(function(token) {var recaptchaResponse = document.getElementById(\'recaptchaResponse\');recaptchaResponse.value = token;});});</script>';
       		} else {
 			throw new Typecho_Widget_Exception(_t('No reCAPTCHA Site/Secret Keys! Please set it/them!'));
 		}
@@ -84,7 +84,6 @@ class reCAPTCHAv3_Plugin implements Typecho_Plugin_Interface
 				return $response;
 			}
 			$resp = getCaptcha($_POST['recaptcha_response'], $secretKey);
-			// var_dump($resp);
 			if ($resp->success == true && $resp->score > 0.5) {
 				return $comments;
 			} else {
