@@ -19,7 +19,7 @@ class reCAPTCHAv3_Plugin implements Typecho_Plugin_Interface
      * @throws Typecho_Plugin_Exception
      */
     	public static function activate() {
-		Typecho_Plugin::factory('Widget_Feedback')->comment = array(__CLASS__, 'filter');
+	Typecho_Plugin::factory('Widget_Feedback')->comment = array(__CLASS__, 'filter');
     }
     
     /**
