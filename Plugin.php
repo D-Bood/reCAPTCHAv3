@@ -63,7 +63,7 @@ class reCAPTCHAv3_Plugin implements Typecho_Plugin_Interface
 		$siteKey = Typecho_Widget::widget('Widget_Options')->plugin('reCAPTCHAv3')->siteKeyV3;
 		$secretKey = Typecho_Widget::widget('Widget_Options')->plugin('reCAPTCHAv3')->secretKeyV3;
       		if ($siteKey != "" && $secretKey != "") {
-			echo '<script src="https://recaptcha.net/recaptcha/api.js?render='.$siteKey.'"></script><input type="hidden" name="recaptcha_response" id="recaptchaResponse"></input><script>grecaptcha.ready(function() {grecaptcha.execute(\''.$siteKey.'\', {action: \'social\'}).then(function(token) {var recaptchaResponse = document.getElementById(\'recaptchaResponse\');recaptchaResponse.value = token;});});</script>';
+			echo '<script src="https://recaptcha.net/recaptcha/api.js?render='.$siteKey.'"></script><input type="hidden" name="recaptcha_response" id="recaptchaResponse" class="g-recaptcha"></input><script>grecaptcha.ready(function() {grecaptcha.execute(\''.$siteKey.'\', {action: \'social\'}).then(function(token) {var recaptchaResponse = document.getElementById(\'recaptchaResponse\');recaptchaResponse.value = token;});});</script>';
       		} else {
 			throw new Typecho_Widget_Exception(_t('No reCAPTCHAv3 Site/Secret Keys! Please set it/them!'));
 		}
